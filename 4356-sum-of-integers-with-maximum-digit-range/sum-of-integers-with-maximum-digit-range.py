@@ -1,23 +1,23 @@
 class Solution:
     def maxDigitRange(self, nums: list[int]) -> int:
-        res=[]
+        maxRange = float('-inf')
+        maxSum=0
         for i,n in enumerate(nums):
-            small = float("inf")
-            large = float("-inf")
+            small = float('inf')
+            large = float('-inf')
             while n :
                 digit = n%10
-                small = min(small,digit)
-                large = max(large,digit)
+                small = min(digit,small)
+                large = max(digit,large)
                 n=n//10
-            res.append(((large-small)*-1,nums[i]))
+            if large-small >=maxRange:
+                if maxRange ==large-small:
+                    maxSum += nums[i]
+                    continue
+                maxRange = large-small
+                maxSum = nums[i]
+        return maxSum
+                
 
-        minheap=res.copy()
-        heapq.heapify(minheap)
-        Range,number = heapq.heappop(minheap)
-        Range = -Range
-        while minheap and minheap[0][0]== -Range:
-            _,heapele=heapq.heappop(minheap)
-           
-            number+=heapele
-        return number
+
         
