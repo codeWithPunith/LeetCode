@@ -10,8 +10,6 @@ class Solution(object):
                 stk.pop()
             else:
                 stk.append(c)
-        res=""
-        for c in stk:
-            res+=c
-        return res
+        
+        return "".join(stk)
         
