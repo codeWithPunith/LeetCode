@@ -1,8 +1,8 @@
 class Solution:
     def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
-        count = defaultdict(int)
-        for n in arr:
-            count[n]+=1
+        count = Counter(arr)
+
+        
         minheap = [(key,val) for val ,key in count.items()]
         # for key,val in count.items():
         #     heapq.heappush(minheap,(val,key))
