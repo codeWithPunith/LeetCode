@@ -4,14 +4,10 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if n<=1:
-            return 0
-        def dfs(alphabets,pasting):
-            if alphabets==n:
-                return 0
-            if alphabets>n:
-                return 1000
-            res1 = 1+dfs(alphabets+pasting,pasting)
-            res2 = 2+dfs(alphabets+alphabets,alphabets)
-            return min(res1,res2)
-        return dfs(1,1)+1
+        dp=[1000]*(n+1)
+        dp[1]=0
+        for i in range(2,n+1):
+            for j in range(1,1+(i//2)):
+                if i%j==0:
+                    dp[i]=min(dp[i],dp[j]+i//j)
+        return dp[n]
