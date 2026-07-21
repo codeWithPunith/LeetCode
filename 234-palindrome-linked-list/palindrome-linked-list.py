@@ -9,24 +9,24 @@ class Solution(object):
         :type head: Optional[ListNode]
         :rtype: bool
         """
-        if head.next is None:
+        if head is None or head.next is None :
             return True
         slow,fast = head,head
-        while fast.next is not  None and fast.next.next is not None:
+        while fast.next is not None and fast.next.next is not None :
             slow = slow.next
             fast=fast.next.next
-        mid = slow 
-        cur,prev = slow.next,None
-        while cur is not None:
-           temp = cur.next
-           cur.next = prev
-           prev = cur
-           cur = temp
-        while prev is not None:
-            if head.val!=prev.val:
+        BeginingOfSecond = slow.next
+
+        prev = None
+        while BeginingOfSecond is not None:
+            temp = BeginingOfSecond.next
+            BeginingOfSecond.next= prev
+            prev =BeginingOfSecond
+            BeginingOfSecond=temp
+        while prev:
+            if prev.val!=head.val:
                 return False
-            head = head.next
+            head=head.next
             prev=prev.next
         return True
-
         
