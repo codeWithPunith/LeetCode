@@ -16,9 +16,7 @@ class Solution:
             return noofships
         res=maximum
         while minimum<=maximum:
-            if reqShipsForThisWeight(minimum)<=days:
-                res = min(minimum,res)
-                break
+            
             midWeight = (maximum+minimum)//2
             ships = reqShipsForThisWeight(midWeight)
             
