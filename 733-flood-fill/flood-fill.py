@@ -2,7 +2,7 @@ class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
         #lets do this with dfs
         d=[[1,0],[0,1],[-1,0],[0,-1]]
-        visited = set()
+
         def inbounds(r,c):
             if r>=0 and c>=0 and r<len(image) and c<len(image[0]):
                 return True
@@ -12,13 +12,13 @@ class Solution:
                 return 
             for dr,dc in d:
                 nr,nc=r+dr,c+dc
-                if inbounds(nr,nc) and image[nr][nc]==prevColor and (nr,nc)not in visited:
-                    visited.add((nr,nc))
-                    dfs(nr,nc,prevColor)
+                if inbounds(nr,nc) and image[nr][nc]==prevColor and image[nr][nc]!=color:
                     image[nr][nc]=color
-        visited.add((sr,sc))
-        dfs(sr,sc,image[sr][sc])
+                    dfs(nr,nc,prevColor)
+        ogcolor = image[sr][sc]          
         image[sr][sc]=color
+        dfs(sr,sc,ogcolor)
+
         return image
                 
 
