@@ -12,10 +12,5 @@ class Solution:
             if ele:
                 stk.append(ele)
             
-        res=""
-        while len(stk)!=1:
-            ele = stk.pop()
-            res+=ele+" "
-        res+=stk.pop()
-        return res
-        
+        rev=stk[::-1]
+        return " ".join(rev)
