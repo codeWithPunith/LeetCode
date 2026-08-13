@@ -1,16 +1,15 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        stk=[]
+        sb = collections.deque()
         i=0
         while i<len(s):
             while i<len(s) and s[i]==" ":
                 i+=1
-            ele=""
+            start=i
             while i<len(s) and s[i]!=" ":
-                ele+=s[i]
                 i+=1
-            if ele:
-                stk.append(ele)
+            if s[start:i]:
+                sb.appendleft(s[start:i])
             
        
-        return " ".join(stk[::-1])
+        return " ".join(sb)
