@@ -12,5 +12,5 @@ class Solution:
             if ele:
                 stk.append(ele)
             
-        rev=stk[::-1]
-        return " ".join(rev)
+       
+        return " ".join(stk[::-1])
